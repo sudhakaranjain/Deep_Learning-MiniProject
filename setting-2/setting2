@@ -1,0 +1,14 @@
+Minibatch GD:
+relu
+lr: 0.001
+momentum: 0.9
+Batch size: 170
+
+Regularization:
+dropout (0.1, 0.3)
+batch norm
+weight decay(0.01)
+
+Evaluation metrics:
+epochs: 100
+Acc: 90.80

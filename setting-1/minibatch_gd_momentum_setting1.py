@@ -3,6 +3,7 @@ import idx2numpy
 import cv2 as cv
 import numpy as np
 import gzip
+import pickle
 import matplotlib.pyplot as plt
 
 class MiniBatch_GD():
@@ -35,17 +36,17 @@ class MiniBatch_GD():
 
 if __name__ == "__main__":
 
-	train_data_path = 'fashion_data/train-images-idx3-ubyte.gz'
-	test_data_path = 'fashion_data/t10k-images-idx3-ubyte.gz'
-	train_label_path = 'fashion_data/train-labels-idx1-ubyte.gz'
-	test_label_path = 'fashion_data/t10k-labels-idx1-ubyte.gz'
+	train_data_path = '../fashion_data/train-images-idx3-ubyte.gz'
+	test_data_path = '../fashion_data/t10k-images-idx3-ubyte.gz'
+	train_label_path = '../fashion_data/train-labels-idx1-ubyte.gz'
+	test_label_path = '../fashion_data/t10k-labels-idx1-ubyte.gz'
 
-	mngd = MiniBatch_GD()
+	mbgd = MiniBatch_GD()
 
-	train_data = mngd.extract_data(train_data_path, 60000)
-	train_labels = mngd.extract_labels(train_label_path, 60000)
-	test_data = mngd.extract_data(test_data_path, 10000)
-	test_labels = mngd.extract_labels(test_label_path, 10000)
+	train_data = mbgd.extract_data(train_data_path, 60000)
+	train_labels = mbgd.extract_labels(train_label_path, 60000)
+	test_data = mbgd.extract_data(test_data_path, 10000)
+	test_labels = mbgd.extract_labels(test_label_path, 10000)
 
 # show image using cv
 	# cv.imshow("", train_data[512])
@@ -59,6 +60,8 @@ if __name__ == "__main__":
 	train_labels = keras.utils.to_categorical(train_labels)
 	test_labels = keras.utils.to_categorical(test_labels)
 	opt = keras.optimizers.SGD(lr = 0.001 , momentum = 0.9)
-	mngd.network.compile(optimizer=opt, loss='categorical_crossentropy', metrics=['accuracy'])
-	mngd.network.fit(train_data, train_labels, batch_size = 170, validation_data=(test_data, test_labels), epochs=10)
-	mngd.network.save('minibatchGD_network.h5')
+	mbgd.network.compile(optimizer=opt, loss='categorical_crossentropy', metrics=['accuracy'])
+	hist = mbgd.network.fit(train_data, train_labels, batch_size = 170, validation_data=(test_data, test_labels), epochs=30)
+	mbgd.network.save('trained_cnn.h5')
+	with open('trainHistoryDict', 'wb') as file:
+		pickle.dump(hist.history, file)
