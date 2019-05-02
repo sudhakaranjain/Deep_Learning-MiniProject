@@ -43,10 +43,10 @@ class MiniBatch_GD():
 
 if __name__ == "__main__":
 
-	train_data_path = '/content/sample_data/train-images-idx3-ubyte.gz'
-	test_data_path = '/content/sample_data/t10k-images-idx3-ubyte.gz'
-	train_label_path = '/content/sample_data/train-labels-idx1-ubyte.gz'
-	test_label_path = '/content/sample_data/t10k-labels-idx1-ubyte.gz'
+	train_data_path = '../fashion_data/train-images-idx3-ubyte.gz'
+	test_data_path = '../fashion_data/t10k-images-idx3-ubyte.gz'
+	train_label_path = '../fashion_data/train-labels-idx1-ubyte.gz'
+	test_label_path = '../fashion_data/t10k-labels-idx1-ubyte.gz'
 
 	mbgd = MiniBatch_GD()
 
