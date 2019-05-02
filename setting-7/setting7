@@ -1,0 +1,14 @@
+RMSprop:
+Sigmoid
+lr: 0.001, rho: 0.9
+momentum: 0.9
+Batch size: 170
+
+Regularization:
+dropout 
+batch normalization
+weight decay
+
+Evaluation metrics:
+epochs: 50
+Acc: 90.36

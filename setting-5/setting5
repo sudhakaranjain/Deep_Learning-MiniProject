@@ -1,0 +1,14 @@
+RMSprop:
+PReLU
+lr: 0.001, rho: 0.9
+momentum: 0.9
+Batch size: 170
+
+Regularization:
+dropout 
+batch normalization
+weight decay
+
+Evaluation metrics:
+epochs: 150
+Acc: 90.94

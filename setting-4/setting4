@@ -1,0 +1,14 @@
+Minibatch GD:
+PReLU
+lr: 0.001
+momentum: 0.9
+Batch size: 170
+
+Regularization:
+dropout 
+batch normalization
+weight decay
+
+Evaluation metrics:
+epochs: 200
+Acc: 91.46

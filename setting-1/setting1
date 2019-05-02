@@ -12,3 +12,5 @@ no weight decay
 Evaluation metrics:
 epochs: 30
 Acc: 88.76
+
+Acc_poor: 19.99
