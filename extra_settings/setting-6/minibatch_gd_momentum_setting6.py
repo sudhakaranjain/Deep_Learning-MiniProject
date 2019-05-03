@@ -12,12 +12,12 @@ class MiniBatch_GD():
 	 self.network = keras.Sequential()
 	 self.network.add(keras.layers.Conv2D(32, kernel_size=3, kernel_regularizer=keras.regularizers.l2(0.01), 
 									  bias_regularizer=keras.regularizers.l2(0.01), 
-									  activation='sigmoid', input_shape=(28,28,1)))
+									  activation='relu', input_shape=(28,28,1)))
 	 self.network.add(keras.layers.BatchNormalization())
 	 self.network.add(keras.layers.MaxPooling2D(pool_size=(2, 2), strides=None, padding='valid', data_format=None))
 	 self.network.add(keras.layers.Dropout(0.1))
 	 self.network.add(keras.layers.Conv2D(64, kernel_size=3, kernel_regularizer=keras.regularizers.l2(0.01), 
-										  bias_regularizer=keras.regularizers.l2(0.01), activation='sigmoid'))
+										  bias_regularizer=keras.regularizers.l2(0.01), activation='relu'))
 	 self.network.add(keras.layers.BatchNormalization())
 	 self.network.add(keras.layers.MaxPooling2D(pool_size=(2, 2), strides=None, padding='valid', data_format=None))
 	 self.network.add(keras.layers.Dropout(0.3))
@@ -43,10 +43,10 @@ class MiniBatch_GD():
 
 if __name__ == "__main__":
 
-	train_data_path = '../fashion_data/train-images-idx3-ubyte.gz'
-	test_data_path = '../fashion_data/t10k-images-idx3-ubyte.gz'
-	train_label_path = '../fashion_data/train-labels-idx1-ubyte.gz'
-	test_label_path = '../fashion_data/t10k-labels-idx1-ubyte.gz'
+	train_data_path = '/content/sample_data/train-images-idx3-ubyte.gz'
+	test_data_path = '/content/sample_data/t10k-images-idx3-ubyte.gz'
+	train_label_path = '/content/sample_data/train-labels-idx1-ubyte.gz'
+	test_label_path = '/content/sample_data/t10k-labels-idx1-ubyte.gz'
 
 	mbgd = MiniBatch_GD()
 
@@ -66,9 +66,9 @@ if __name__ == "__main__":
 
 	train_labels = keras.utils.to_categorical(train_labels)
 	test_labels = keras.utils.to_categorical(test_labels)
-	opt = keras.optimizers.RMSprop(lr = 0.001, rho = 0.9)
+	opt = keras.optimizers.RMSprop(lr = 0.001, , rho = 0.9)
 	mbgd.network.compile(optimizer=opt, loss='categorical_crossentropy', metrics=['accuracy'])
-	hist = mbgd.network.fit(train_data, train_labels, batch_size = 170, validation_data=(test_data, test_labels), epochs=50)
+	hist = mbgd.network.fit(train_data, train_labels, batch_size = 170, validation_data=(test_data, test_labels), epochs=150)
 	mbgd.network.save('trained_cnn.h5')
 	with open('trainHistoryDict', 'wb') as file:
 		pickle.dump(hist.history, file)
