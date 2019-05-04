@@ -1,0 +1,13 @@
+ResNet_v1:
+Adam
+Relu
+lr: 0.001, beta1: 0.9 beta2:0.999
+Batch size: 170
+
+Regularization:
+batch normalization
+weight decay
+
+Evaluation metrics:
+epochs: 110
+Acc: 86.37

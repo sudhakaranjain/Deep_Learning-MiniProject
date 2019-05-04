@@ -1,0 +1,15 @@
+Adam:
+Sigmoid
+lr: 0.001, beta1: 0.9 beta2:0.999
+Batch size: 170
+
+Data Augmentation
+
+Regularization:
+dropout 
+batch normalization
+weight decay
+
+Evaluation metrics:
+epochs: 200
+Acc: 89.15
