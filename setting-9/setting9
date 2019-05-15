@@ -1,0 +1,21 @@
+MiniVGG:
+Adam
+Relu
+lr: 0.001, beta1: 0.9 beta2:0.999
+Batch size: 170
+
+2 layers of Conv2D (32, (3,3))
+1 Maxpooling (2,2)
+2 layers of Conv2D(64, (3,3))
+1 Maxpooling  (2,2)
+1 Fully connected layer (512)
+Output layer (10)
+
+Regularization:
+batch normalization
+dropout (0.1, 0.3)
+No weight decay
+
+Evaluation metrics:
+epochs: 30
+Acc: 93.37
