@@ -13,6 +13,7 @@ How to run the code:
   * source env/bin/activate
 * Install the required packages:
   * pip install -r requirements.txt
+  * source env/bin/activate
 * Navigate to the required setting folder
 * Run the code (ex. minibatch_gd_momentum_setting1):
   * python3 minibatch_gd_momentum_setting1
