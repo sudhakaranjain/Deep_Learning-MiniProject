@@ -71,6 +71,13 @@ if __name__ == "__main__":
 
 	datagen.fit(train_data)
 
+# show augmented image using matplotlib
+	# xdata, xlabel = datagen.flow(train_data, train_labels, batch_size=10).next()
+	# print(xlabel[0])
+	# image = np.asarray(xdata[0]).squeeze()
+	# plt.imshow(image)
+	# plt.show()
+
 	train_labels = keras.utils.to_categorical(train_labels)
 	test_labels = keras.utils.to_categorical(test_labels)
 	opt = keras.optimizers.Adam(lr=0.001, beta_1=0.9, beta_2=0.999, epsilon=None, decay=0.0, amsgrad=False)
